@@ -5,13 +5,32 @@ using UnityEngine;
 public class GameState : MonoBehaviour 
 {
 	public Rigidbody2D playerBody;
-	public float deathPosition;
+	public float deathPosition, deathPositionDebugLineWidth;
 	private float score;
 	private UIManager uiController;
 
 	void Start()
 	{
-		uiController = GameObject.Find("UI").GetComponent<UIManager>();
+		if (GameObject.Find("Player"))
+		{
+			playerBody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+		}
+		else
+		{
+			Debug.Log("Player object has not been placed to the scene!");
+			playerBody = new Rigidbody2D();
+		}
+
+		if (GameObject.Find("UI"))
+		{
+			uiController = GameObject.Find("UI").GetComponent<UIManager>();
+		}
+		else
+		{
+			Debug.Log("UI Object has not been placed to the scene!");
+			uiController = new UIManager();
+		}
+		
 		StartCoroutine(scoreCounter());
 	}
 
@@ -26,6 +45,9 @@ public class GameState : MonoBehaviour
 
 	bool isDead()
 	{
+		Debug.DrawLine(new Vector3(deathPositionDebugLineWidth, deathPosition, 0), new Vector3(-deathPositionDebugLineWidth, deathPosition, 0), Color.green);
+		Debug.DrawLine(new Vector3(deathPositionDebugLineWidth, -deathPosition, 0), new Vector3(-deathPositionDebugLineWidth, -deathPosition, 0), Color.green);
+
 		if(Mathf.Abs(playerBody.position.y) > deathPosition)
 		{
 			return true;
