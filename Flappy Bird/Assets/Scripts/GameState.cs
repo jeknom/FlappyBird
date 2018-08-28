@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum STATE 
+{
+	START, PLAY, DEAD
+}
+
 public class GameState : MonoBehaviour 
 {
 	public Rigidbody2D playerBody;
@@ -9,58 +14,69 @@ public class GameState : MonoBehaviour
 	private float score;
 	private UIManager uiController;
 
+	//The GameState switch case will keep the right game sequence playing with this enum.
+	private STATE state = STATE.PLAY;
+
 	void Start()
 	{
-		if (GameObject.Find("Player"))
-		{
-			playerBody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-		}
-		else
-		{
-			Debug.Log("Player object has not been placed to the scene!");
-			playerBody = new Rigidbody2D();
-		}
-
-		if (GameObject.Find("UI"))
-		{
-			uiController = GameObject.Find("UI").GetComponent<UIManager>();
-		}
-		else
-		{
-			Debug.Log("UI Object has not been placed to the scene!");
-			uiController = new UIManager();
-		}
+		playerBody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+		uiController = GameObject.Find("UI").GetComponent<UIManager>();
 		
 		StartCoroutine(scoreCounter());
 	}
 
 	void Update()
 	{
-		uiController.setScoreText("Score: " + score);
-		if (isDead())
+		debug();
+
+		//The previously mentioned GameState switch case.
+		switch(state)
 		{
-			Debug.Log("Player is dead!");
+			case STATE.START:
+				break;
+			case STATE.PLAY:
+				uiController.setScoreText("Score: " + score);
+				if (isDead())
+				{
+					state = STATE.DEAD;
+					Debug.Log("Player is dead!");
+				}
+				break;
+			case STATE.DEAD:
+				break;
 		}
 	}
 
-	bool isDead()
+	//Checks if the player is dead.
+	public bool isDead()
 	{
-		Debug.DrawLine(new Vector3(deathPositionDebugLineWidth, deathPosition, 0), new Vector3(-deathPositionDebugLineWidth, deathPosition, 0), Color.green);
-		Debug.DrawLine(new Vector3(deathPositionDebugLineWidth, -deathPosition, 0), new Vector3(-deathPositionDebugLineWidth, -deathPosition, 0), Color.green);
-
-		if(Mathf.Abs(playerBody.position.y) > deathPosition)
+		if(Mathf.Abs(playerBody.position.y) > deathPosition || state == STATE.DEAD)
 		{
 			return true;
 		}
 		return false;
 	}
 
+	void debug()
+	{
+		//Debug deathzone if player is alive.
+		if (!isDead())
+		{
+			Debug.DrawLine(new Vector3(deathPositionDebugLineWidth, deathPosition, 0), new Vector3(-deathPositionDebugLineWidth, deathPosition, 0), Color.green);
+			Debug.DrawLine(new Vector3(deathPositionDebugLineWidth, -deathPosition, 0), new Vector3(-deathPositionDebugLineWidth, -deathPosition, 0), Color.green);
+		}
+	}
+
+	//Keeps count of the score.
 	IEnumerator scoreCounter()
 	{
 		while(true)
 		{
 			score += 0.1f;
+			new Obstacle(0,0,0.3f, new Vector2(6, -2));
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+
+
 }

@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	void FixedUpdate () 
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) && GameObject.Find("Manager").GetComponent<GameState>().isDead() == false)
 		{
 			rb2d.AddForce(jumpForce, ForceMode2D.Impulse);
 		}

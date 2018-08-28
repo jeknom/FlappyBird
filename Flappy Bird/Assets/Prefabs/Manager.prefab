@@ -53,4 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 0}
   deathPosition: 4.5
-  score: 0
+  deathPositionDebugLineWidth: 15
