@@ -73,10 +73,7 @@ public class GameState : MonoBehaviour
 		while(true)
 		{
 			score += 0.1f;
-			new Obstacle(0,0,0.3f, new Vector2(6, -2));
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
-
-
 }
