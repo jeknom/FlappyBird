@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformScale: {x: 1, y: 10, z: 0}
-  startPosition: {x: 6, y: -6}
+  startPosition: {x: 40, y: -6}
   endPosition: 10
   speed: 0.1
   toggleDebug: 1
+  toggleRandoming: 1
 --- !u!212 &212491700578943790
 SpriteRenderer:
   m_ObjectHideFlags: 1

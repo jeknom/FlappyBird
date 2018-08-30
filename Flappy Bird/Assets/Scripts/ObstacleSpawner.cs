@@ -16,28 +16,31 @@ public class ObstacleSpawner : MonoBehaviour {
 	[Tooltip("This variable changes the interval at which the obstacles are being spawned.")]
 	public float spawnDelay;
 
+	[Tooltip("This will set the initial spawn position for the obstacle. You might want to set this off camera to avoid flashing objects.")]
+	public Vector3 initialStartPosition;
+
 	[Tooltip("This boolean will decide if the object spawner will spawn objects or not.")]
 	public bool toggleSpawner = true;
 	
 	void OnEnable()
 	{
-		//Checks if the scene name matches the string and if not, removes this script component from the GameObject.
+		// Checks if the scene name matches the string and if not, removes this script component from the GameObject.
 		if (SceneManager.GetActiveScene().name != activeSceneName)
 		{
 			Debug.Log("Removing the ObstacleSpawner script from " + gameObject.name + ". Did you remember to set the scene in inspector?");
 			Destroy(gameObject.GetComponent<ObstacleSpawner>());
 		}
 
-		//Makes sure that spawn delay is a positive value.
+		// Makes sure that spawn delay is a positive value.
 		spawnDelay = Mathf.Abs(spawnDelay);
 
-		//Checks if the spawn delay has been set to something other than 0 and makes a note to console if it hasn't.
+		// Checks if the spawn delay has been set to something other than 0 and makes a note to console if it hasn't.
 		if (spawnDelay == 0)
 		{
 			Debug.Log(gameObject.name + "s spawn delay was set to 0. You might have forgotten to set an value for it.");
 		}
 
-		//This one checks if the obstacle spawner has been turned on or not in inspector and if it is off, prints a notification to the console about this.
+		// This one checks if the obstacle spawner has been turned on or not in inspector and if it is off, prints a notification to the console about this.
 		if (!toggleSpawner)
 		{
 			Debug.Log("Obstacle spawning has been turned off in the inspector for " + gameObject.name);
@@ -47,7 +50,7 @@ public class ObstacleSpawner : MonoBehaviour {
 		StartCoroutine(delayedObjectSpawner());
 	}
 
-	//This method will spawn new obstacles with an interval that was previously defined.
+	// This method will spawn new obstacles with an interval that was previously defined.
 	IEnumerator delayedObjectSpawner()
 	{
 		// This while loop will run as long as the GameState component says that player is alive.
@@ -57,7 +60,9 @@ public class ObstacleSpawner : MonoBehaviour {
 			// scene with the intervals set into the spawnDelay variable.
 			if (toggleSpawner)
 			{
-				Instantiate(obstacle);
+				// The instantiate will take a GameObject, Vector3 position and the rotation and then clone the obejct to that position with the rotation.
+				// Here the instantiated obstacle is set to the local variable.
+				GameObject instantiatedObstacle = Instantiate(obstacle, initialStartPosition, Quaternion.identity);
 				yield return new WaitForSeconds(spawnDelay);
 			}
 			// If the toggle spawner boolean was set false, the loop will be broken...

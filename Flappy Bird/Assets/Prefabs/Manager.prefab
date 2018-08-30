@@ -72,4 +72,5 @@ MonoBehaviour:
   obstacle: {fileID: 1795617165613062, guid: b6da2ddfd45b9f34fb285cc55f799d05, type: 2}
   activeSceneName: Main
   spawnDelay: 5
+  initialStartPosition: {x: 40, y: 0, z: 0}
   toggleSpawner: 1
