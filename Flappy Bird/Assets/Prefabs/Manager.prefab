@@ -57,6 +57,7 @@ MonoBehaviour:
   deathPositionX: 0
   deathPositionXDebugLineWidth: 0
   state: 1
+  toggleDebug: 0
 --- !u!114 &114548998307105450
 MonoBehaviour:
   m_ObjectHideFlags: 1

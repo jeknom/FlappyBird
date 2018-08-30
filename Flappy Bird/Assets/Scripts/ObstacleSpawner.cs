@@ -17,7 +17,7 @@ public class ObstacleSpawner : MonoBehaviour {
 	public float spawnDelay;
 
 	[Tooltip("This boolean will decide if the object spawner will spawn objects or not.")]
-	public bool toggleSpawner;
+	public bool toggleSpawner = true;
 	
 	void OnEnable()
 	{
@@ -35,6 +35,12 @@ public class ObstacleSpawner : MonoBehaviour {
 		if (spawnDelay == 0)
 		{
 			Debug.Log(gameObject.name + "s spawn delay was set to 0. You might have forgotten to set an value for it.");
+		}
+
+		//This one checks if the obstacle spawner has been turned on or not in inspector and if it is off, prints a notification to the console about this.
+		if (!toggleSpawner)
+		{
+			Debug.Log("Obstacle spawning has been turned off in the inspector for " + gameObject.name);
 		}
 
 		//When the GameObject containing this script is added to the scene it will run the obstacle spawner coroutine.
