@@ -49,7 +49,7 @@ public class ObstaclePrefs : MonoBehaviour
 		}
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		// This will start moving the rigidbody of this GameObject to the left and the mathf makes sure that the it moves left.
 		// The if statement will only move this GameObject if it has not crossed the end position on the X axis.

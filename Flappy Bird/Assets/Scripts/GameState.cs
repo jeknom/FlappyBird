@@ -32,7 +32,7 @@ public class GameState : MonoBehaviour
 	[SerializeField]
 	private bool toggleDebug;
 	
-	//This float variable will keep track of the game's score.
+	// This float variable will keep track of the game's score.
 	private float score;
 
 	void OnEnable()
@@ -73,13 +73,13 @@ public class GameState : MonoBehaviour
 	{
 		debugPositions();
 
-		//The previously mentioned GameState switch case. It will make sure that the right sequence is playing.
+		// The previously mentioned GameState switch case. It will make sure that the right sequence is playing.
 		switch(state)
 		{
 			case STATE.START:
 				break;
 			case STATE.PLAY:
-				uiController.setScoreText("Score: " + score);
+				uiController.setScoreText("Score: " + (int)score);
 				if (isDead())
 				{
 					state = STATE.DEAD;
@@ -91,7 +91,7 @@ public class GameState : MonoBehaviour
 		}
 	}
 
-	//Checks if the player is dead.
+	// Checks if the player is dead.
 	public bool isDead()
 	{
 		if(Mathf.Abs(playerRb2d.position.y) > deathPositionX || state == STATE.DEAD)
@@ -101,7 +101,13 @@ public class GameState : MonoBehaviour
 		return false;
 	}
 
-	//This methods takes in a string value and prints it into console if textDebugging is enabled.
+	// This method will allow setting the death state.
+	public void setDead()
+	{
+		state = STATE.DEAD;
+	}
+
+	// This methods takes in a string value and prints it into console if textDebugging is enabled.
 	void debugLog(string text)
 	{
 		if (toggleDebug)
@@ -112,7 +118,7 @@ public class GameState : MonoBehaviour
 
 	void debugPositions()
 	{
-		//Debug deathzone if player is alive and debugging is toggled on.
+		// Debug deathzone if player is alive and debugging is toggled on.
 		if (!isDead() && toggleDebug)
 		{
 			Debug.DrawLine(new Vector3(deathPositionXDebugLineWidth, deathPositionX, 0), new Vector3(-deathPositionXDebugLineWidth, deathPositionX, 0), Color.red);
@@ -120,7 +126,7 @@ public class GameState : MonoBehaviour
 		}
 	}
 
-	//Keeps count of the score.
+	// Keeps count of the score.
 	IEnumerator scoreCounter()
 	{
 		while(true)
@@ -128,5 +134,11 @@ public class GameState : MonoBehaviour
 			score += 0.1f;
 			yield return new WaitForSeconds(0.1f);
 		}
+	}
+
+	// This method can be used to modify the score value.
+	public void setScore(float value)
+	{
+		score = value;
 	}
 }

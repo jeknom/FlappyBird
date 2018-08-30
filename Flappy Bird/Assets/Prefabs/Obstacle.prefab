@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 212491700578943790}
   - component: {fileID: 50101981840872514}
   - component: {fileID: 61646074582486712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   startPosition: {x: 40, y: -6}
   endPosition: 10
   speed: 0.1
-  toggleDebug: 1
+  toggleDebug: 0
   toggleRandoming: 1
 --- !u!212 &212491700578943790
 SpriteRenderer:

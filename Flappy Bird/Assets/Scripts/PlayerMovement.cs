@@ -20,4 +20,15 @@ public class PlayerMovement : MonoBehaviour {
 			rb2d.AddForce(jumpForce, ForceMode2D.Impulse);
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.layer == 8)
+		{
+			GameObject.Find("Manager").GetComponent<GameState>().setDead();
+			Vector2 oppositeForce = new Vector2(-5, rb2d.velocity.y * 2);
+			rb2d.velocity = new Vector2(0, 0);
+			rb2d.AddForce(oppositeForce, ForceMode2D.Impulse);
+		}
+	}
 }

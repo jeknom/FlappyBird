@@ -61,8 +61,7 @@ public class ObstacleSpawner : MonoBehaviour {
 			if (toggleSpawner)
 			{
 				// The instantiate will take a GameObject, Vector3 position and the rotation and then clone the obejct to that position with the rotation.
-				// Here the instantiated obstacle is set to the local variable.
-				GameObject instantiatedObstacle = Instantiate(obstacle, initialStartPosition, Quaternion.identity);
+				Instantiate(obstacle, initialStartPosition, Quaternion.identity);
 				yield return new WaitForSeconds(spawnDelay);
 			}
 			// If the toggle spawner boolean was set false, the loop will be broken...
