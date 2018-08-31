@@ -262,7 +262,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.8773585, g: 0.44248664, b: 0.41798684, a: 0}
+  m_BackGroundColor: {r: 0.4357714, g: 0.41960788, b: 0.8784314, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -911,6 +911,99 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224062778504015710, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -597.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224062778504015710, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 247.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224062778504015710, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -505
+      objectReference: {fileID: 0}
+    - target: {fileID: 224062778504015710, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -1205
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_Text
+      value: '0
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 224385944399018436, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224385944399018436, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 26.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224385944399018436, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224385944399018436, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 20.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114578426609858716, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114578426609858716, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2737d477e231416458aad7092b3b6cd7,
+        type: 3}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114661920145647842, guid: 03e0de3ea63287849b5a30e8de40c674,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03e0de3ea63287849b5a30e8de40c674, type: 2}
   m_IsPrefabAsset: 0
@@ -952,6 +1045,11 @@ Prefab:
     - target: {fileID: 4975082485003776, guid: d5688ad3ede1dfa4790dc1dcd23472f3, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114739940959034282, guid: d5688ad3ede1dfa4790dc1dcd23472f3,
+        type: 2}
+      propertyPath: jumpForce.y
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5688ad3ede1dfa4790dc1dcd23472f3, type: 2}

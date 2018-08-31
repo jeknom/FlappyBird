@@ -33,7 +33,7 @@ public class GameState : MonoBehaviour
 	private bool toggleDebug;
 	
 	// This float variable will keep track of the game's score.
-	private float score;
+	private int score;
 
 	void OnEnable()
 	{
@@ -79,7 +79,7 @@ public class GameState : MonoBehaviour
 			case STATE.START:
 				break;
 			case STATE.PLAY:
-				uiController.setScoreText("Score: " + (int)score);
+				uiController.setScoreText(score.ToString());
 				if (isDead())
 				{
 					state = STATE.DEAD;
@@ -131,13 +131,13 @@ public class GameState : MonoBehaviour
 	{
 		while(true)
 		{
-			score += 0.1f;
-			yield return new WaitForSeconds(0.1f);
+			score += 1;
+			yield return new WaitForSeconds(1f);
 		}
 	}
 
 	// This method can be used to modify the score value.
-	public void setScore(float value)
+	public void setScore(int value)
 	{
 		score = value;
 	}
