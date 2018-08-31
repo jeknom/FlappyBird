@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	void Update () 
 	{
-		if (Input.GetMouseButtonDown(0) && !GameObject.Find("Manager").GetComponent<GameState>().isDead())
+		if (Input.GetMouseButtonDown(1) && !GameObject.Find("Manager").GetComponent<GameState>().isDead())
 		{
 			rb2d.velocity = Vector2.zero;
 			rb2d.AddForce(jumpForce, ForceMode2D.Impulse);

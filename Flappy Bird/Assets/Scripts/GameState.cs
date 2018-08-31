@@ -79,6 +79,7 @@ public class GameState : MonoBehaviour
 			case STATE.START:
 				break;
 			case STATE.PLAY:
+				uiController.setUISequence(state);
 				Time.timeScale = 1;
 				uiController.setScoreText(score.ToString());
 				if (isDead())
@@ -90,8 +91,10 @@ public class GameState : MonoBehaviour
 			case STATE.PAUSE:
 				uiController.setScoreText("| |");
 				Time.timeScale = 0;
+				uiController.setUISequence(state);
 				break;
 			case STATE.DEAD:
+				uiController.setUISequence(state);
 				break;
 		}
 	}

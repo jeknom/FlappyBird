@@ -520,10 +520,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 114661920145647842}
-  pauseButton: {fileID: 114889640302948958}
-  resumeButton: {fileID: 114531399542065094}
-  quitButton: {fileID: 114417229386348638}
   pauseMenu: {fileID: 1928787696436038}
+  pauseButton: {fileID: 1954204693627452}
+  resumeButton: {fileID: 1654436789865888}
+  quitButton: {fileID: 1068812551915348}
 --- !u!114 &114578426609858716
 MonoBehaviour:
   m_ObjectHideFlags: 1
