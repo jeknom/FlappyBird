@@ -5,7 +5,7 @@ using UnityEngine;
 // This enum contains all the possible GameStates required in the game.
 public enum STATE 
 {
-	START, PLAY, DEAD
+	START, PLAY, PAUSE, DEAD
 }
 
 public class GameState : MonoBehaviour 
@@ -79,12 +79,17 @@ public class GameState : MonoBehaviour
 			case STATE.START:
 				break;
 			case STATE.PLAY:
+				Time.timeScale = 1;
 				uiController.setScoreText(score.ToString());
 				if (isDead())
 				{
 					state = STATE.DEAD;
 					debugLog("Player is dead!");
 				}
+				break;
+			case STATE.PAUSE:
+				uiController.setScoreText("| |");
+				Time.timeScale = 0;
 				break;
 			case STATE.DEAD:
 				break;
@@ -134,11 +139,5 @@ public class GameState : MonoBehaviour
 			score += 1;
 			yield return new WaitForSeconds(1f);
 		}
-	}
-
-	// This method can be used to modify the score value.
-	public void setScore(int value)
-	{
-		score = value;
 	}
 }
