@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f982c93c1dcb8a2489fa61bddd162c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinObject: {fileID: 1579281224306160, guid: 34239f81901284b48942f4d1f8de1d6c, type: 2}
   transformScale: {x: 1, y: 10, z: 0}
   startPosition: {x: 40, y: -6}
-  endPosition: 10
+  endPosition: 20
   speed: 0.1
   toggleDebug: 0
   toggleRandoming: 1

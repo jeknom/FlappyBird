@@ -33,7 +33,7 @@ public class GameState : MonoBehaviour
 	private bool toggleDebug;
 	
 	// This float variable will keep track of the game's score.
-	private int score;
+	public int score;
 
 	void OnEnable()
 	{

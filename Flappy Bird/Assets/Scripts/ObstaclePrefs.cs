@@ -7,6 +7,10 @@ public class ObstaclePrefs : MonoBehaviour
 	//This rigidbody will be assigned to refer this GameObjects rigidbody.
 	private Rigidbody2D rb2d;
 
+	[Header("Game Objects")]
+	[Tooltip("This is the Coin object that might get randomly spawned with the obstacles.")]
+	public GameObject coinObject;
+
 	[Header("SIZE")]
 	[Tooltip("Adjust transform scale of this obstacle.")]
 	public Vector3 transformScale;
@@ -82,6 +86,15 @@ public class ObstaclePrefs : MonoBehaviour
 			Vector3[] topBottomPositions = new Vector3[] {new Vector3(startPosition.x, -6, 0), new Vector3(startPosition.x, 6, 0)};
 			System.Random rnd = new System.Random();
 			startPosition = topBottomPositions[rnd.Next(0, topBottomPositions.Length)];
+
+			if (startPosition.y == -6 && rnd.Next(0, 100) < 33)
+			{
+				Instantiate(coinObject, new Vector3(startPosition.x, startPosition.y + 6f, 0), Quaternion.identity);
+			}
+			else if (startPosition.y == 6 && rnd.Next(0, 100) < 33)
+			{
+				Instantiate(coinObject, new Vector3(startPosition.x, startPosition.y - 6f, 0), Quaternion.identity);
+			}
 		}
 	}
 }
