@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			rb2d.velocity = Vector2.zero;
 			rb2d.AddForce(jumpForce, ForceMode2D.Impulse);
+			gameObject.GetComponent<Animator>().SetTrigger("flap");
 		}
 	}
 

@@ -30,14 +30,13 @@ public class CoinPrefs : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
+	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.name == "Player")
 		{
-			Physics2D.IgnoreCollision(GameObject.Find("Player").GetComponent<BoxCollider2D>(), gameObject.GetComponent<CircleCollider2D>(), true);
+			
 			GameObject.Find("Manager").GetComponent<GameState>().score += coinValue;
 			Destroy(gameObject);
-			Physics2D.IgnoreCollision(GameObject.Find("Player").GetComponent<BoxCollider2D>(), gameObject.GetComponent<CircleCollider2D>(), false);
 		}
 	}
 }

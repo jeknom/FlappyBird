@@ -54,10 +54,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRb2d: {fileID: 0}
   uiController: {fileID: 0}
-  deathPositionX: 0
-  deathPositionXDebugLineWidth: 0
-  state: 1
+  deathPositionX: 4.5
+  deathPositionXDebugLineWidth: 10
+  state: 0
   toggleDebug: 0
+  score: 0
 --- !u!114 &114548998307105450
 MonoBehaviour:
   m_ObjectHideFlags: 1

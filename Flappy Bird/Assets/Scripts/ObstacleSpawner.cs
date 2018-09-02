@@ -24,13 +24,6 @@ public class ObstacleSpawner : MonoBehaviour {
 	
 	void OnEnable()
 	{
-		// Checks if the scene name matches the string and if not, removes this script component from the GameObject.
-		if (SceneManager.GetActiveScene().name != activeSceneName)
-		{
-			Debug.Log("Removing the ObstacleSpawner script from " + gameObject.name + ". Did you remember to set the scene in inspector?");
-			Destroy(gameObject.GetComponent<ObstacleSpawner>());
-		}
-
 		// Makes sure that spawn delay is a positive value.
 		spawnDelay = Mathf.Abs(spawnDelay);
 

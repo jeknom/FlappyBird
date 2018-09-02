@@ -65,7 +65,8 @@ public class ObstaclePrefs : MonoBehaviour
 			debugDeathZone();
 		}
 		// If the GameObjects Rigidbody2D crosses the X axis line and the player is not dead, the GameObject will be destroyed.
-		else if (!GameObject.Find("Manager").GetComponent<GameState>().isDead())
+		// Also, if the game is started again these will get destroyed.
+		else if (!GameObject.Find("Manager").GetComponent<GameState>().isDead() || GameObject.Find("Manager").GetComponent<GameState>().state == STATE.START)
 		{
 			Destroy(gameObject);
 		}
