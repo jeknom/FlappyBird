@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 114329512639061536}
   - component: {fileID: 212517388637351470}
   - component: {fileID: 50740883380663618}
-  - component: {fileID: 60887072529965852}
-  m_Layer: 0
-  m_Name: ObstacleSpawner
+  - component: {fileID: 61322106660046386}
+  m_Layer: 8
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &60887072529965852
-PolygonCollider2D:
+--- !u!61 &61322106660046386
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -85,12 +85,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: -0.5}
-      - {x: -0.5, y: 0.5}
-      - {x: 0.5, y: 0.5}
-      - {x: 0.5, y: -0.5}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114329512639061536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,12 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321908e9ba2e948c88a6884995e83230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  templateObject: {fileID: 1795617165613062}
   obstacleList:
   - name: Tree
+    moveSpeed: 0.1
+    startPoint: {x: 15, y: -2.3}
+    obstacleScale: {x: 1.5, y: 1.5, z: 0}
     obstacleSprite: {fileID: 21300000, guid: 71a14779472c24e3e9d3b2de2199c665, type: 3}
-    startPoint: {x: 19, y: -3}
-    moveSpeed: 0
 --- !u!212 &212517388637351470
 SpriteRenderer:
   m_ObjectHideFlags: 1

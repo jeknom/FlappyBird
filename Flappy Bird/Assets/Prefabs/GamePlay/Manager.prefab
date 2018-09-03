@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4697663355425744}
   - component: {fileID: 114512993890049586}
-  - component: {fileID: 114548998307105450}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -59,19 +58,5 @@ MonoBehaviour:
   state: 0
   toggleDebug: 0
   score: 0
---- !u!114 &114548998307105450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438644053595810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ec3472be3f6b314bbb6a9783cc59c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacle: {fileID: 1795617165613062, guid: b6da2ddfd45b9f34fb285cc55f799d05, type: 2}
-  activeSceneName: Main
-  spawnDelay: 5
-  initialStartPosition: {x: 40, y: 0, z: 0}
-  toggleSpawner: 1
+  randomisedObstacle: {fileID: 1795617165613062, guid: b6da2ddfd45b9f34fb285cc55f799d05,
+    type: 2}

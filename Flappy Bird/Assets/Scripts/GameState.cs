@@ -65,8 +65,8 @@ public class GameState : MonoBehaviour
 			Destroy(gameObject.GetComponent<GameState>());
 		}
 		
-		// This will kick off the score counting method.
 		StartCoroutine(scoreCounter());
+		StartCoroutine(obstacleSpawner());
 	}
 
 	void Update()
@@ -150,6 +150,17 @@ public class GameState : MonoBehaviour
 		{
 			score += 1;
 			yield return new WaitForSeconds(1f);
+		}
+	}
+
+	[Header("Obstacle Randomiser")]
+	public GameObject randomisedObstacle;
+	IEnumerator obstacleSpawner()
+	{
+		while(true)
+		{
+			Instantiate(randomisedObstacle, new Vector3(40f, 0f, 0f),Quaternion.identity);
+			yield return new WaitForSeconds(5f);
 		}
 	}
 }

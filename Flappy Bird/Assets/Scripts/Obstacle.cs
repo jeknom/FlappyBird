@@ -6,43 +6,35 @@ using UnityEngine;
 public class ObstaclePrefs
 {
 	public string name;
-	public Sprite obstacleSprite;
-	public Vector2 startPoint;
 	public float moveSpeed;
+	public Vector2 startPoint;
+	public Vector3 obstacleScale;
+	public Sprite obstacleSprite;
 }
 
 public class Obstacle : MonoBehaviour
 {
-	[Header("Obstacles")] 
-	[Tooltip("The randomly spawned obstacles will use this objects components.")] 
-	public GameObject templateObject;
-	[SerializeField, Tooltip("Add all obstacles to this list.")]
-	private ObstaclePrefs[] obstacleList = new ObstaclePrefs[1];
+	[Header("Obstacles")]
+	[SerializeField, Tooltip("Contains all of the used Obstacles.")]
+	private ObstaclePrefs[] obstacleList = new ObstaclePrefs[0];
+	private ObstaclePrefs selectedPrefs;
 
-	//This method randomly selects one item from obstaclePrefs and creates an obstacle based on what it receives from there.
-	public GameObject generateObstacle()
+	// Assigning randomly picked obstacle preferences to this GameObject.
+	void OnEnable()
 	{
 		System.Random rnd = new System.Random();
-		ObstaclePrefs selectedPrefs = obstacleList[0];
-
-		templateObject.name = "Random " + selectedPrefs.name;
-		templateObject.GetComponent<SpriteRenderer>().sprite = selectedPrefs.obstacleSprite;
-		templateObject.GetComponent<Rigidbody2D>().position = selectedPrefs.startPoint;
-
-		return templateObject;
+		selectedPrefs = obstacleList[rnd.Next(0, obstacleList.Length)];
+		gameObject.name = selectedPrefs.name;
+		gameObject.GetComponent<SpriteRenderer>().sprite = selectedPrefs.obstacleSprite;
+		gameObject.GetComponent<Transform>().localScale = selectedPrefs.obstacleScale;
+		gameObject.GetComponent<Rigidbody2D>().position = selectedPrefs.startPoint;
+		gameObject.GetComponent<BoxCollider2D>().size = gameObject.GetComponent<Transform>().localScale;
 	}
 
-	IEnumerator Start()
-	{
-		while(true)
-		{
-			Instantiate(generateObstacle(), new Vector3(40f, 0f, 0f), Quaternion.identity);
-			yield return new WaitForSeconds(5f);
-		}
-	}
-
+	// This will make the GameObject move to the left.
+	// The GameObject gets deleted when it goes too far on the X axis.
 	void FixedUpdate()
 	{
-		gameObject.GetComponent<Rigidbody2D>().position += new Vector2(-.1f, 0);
+		gameObject.GetComponent<Rigidbody2D>().position += new Vector2( - Mathf.Abs(selectedPrefs.moveSpeed), 0);
 	}
 }
