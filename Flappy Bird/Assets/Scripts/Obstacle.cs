@@ -9,6 +9,7 @@ public class ObstaclePrefs
 	public float moveSpeed;
 	public Vector2 startPoint;
 	public Vector3 obstacleScale;
+	public Vector2 colliderScale;
 	public Sprite obstacleSprite;
 }
 
@@ -25,10 +26,11 @@ public class Obstacle : MonoBehaviour
 		System.Random rnd = new System.Random();
 		selectedPrefs = obstacleList[rnd.Next(0, obstacleList.Length)];
 		gameObject.name = selectedPrefs.name;
+		gameObject.tag = "obstacle";
 		gameObject.GetComponent<SpriteRenderer>().sprite = selectedPrefs.obstacleSprite;
 		gameObject.GetComponent<Transform>().localScale = selectedPrefs.obstacleScale;
 		gameObject.GetComponent<Rigidbody2D>().position = selectedPrefs.startPoint;
-		gameObject.GetComponent<BoxCollider2D>().size = gameObject.GetComponent<Transform>().localScale;
+		gameObject.GetComponent<BoxCollider2D>().size = selectedPrefs.colliderScale;
 	}
 
 	// This will make the GameObject move to the left.

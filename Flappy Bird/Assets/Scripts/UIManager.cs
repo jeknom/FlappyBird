@@ -5,61 +5,42 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour 
 {
-	public Text scoreText;
-	public GameObject startUI, pauseMenu, pauseButton, resumeButton, quitButton;
+	private GameState gs;
 
-	public void setUISequence(STATE state)
+	[SerializeField]
+	private GameObject startUI, playUI, pauseUI, deadUI;
+
+	private void Start()
 	{
-		switch(state)
+		gs = GameObject.Find("Manager").GetComponent<GameState>();
+	}
+
+	private void Update()
+	{
+		disableUnused();
+
+		switch(gs.state)
 		{
-			case STATE.START:
-				toggleStartUI(true);
-				togglePlayUI(false);
-				togglePauseUI(false);
+			case STATE.start:
+				startUI.SetActive(true);
 				break;
-			case STATE.PLAY:
-				toggleStartUI(false);
-				togglePlayUI(true);
-				togglePauseUI(false);
+
+			case STATE.play:
 				break;
-			case STATE.PAUSE:
-				toggleStartUI(false);
-				togglePlayUI(false);
-				togglePauseUI(true);
+
+			case STATE.dead:
 				break;
-			case STATE.DEAD:
+
+			case STATE.pause:
 				break;
 		}
 	}
 
-	private void toggleStartUI(bool isEnabled)
+	private void disableUnused()
 	{
-		startUI.SetActive(isEnabled);
-	}
-
-	private void togglePlayUI(bool isEnabled)
-	{
-		pauseButton.SetActive(isEnabled);
-		pauseButton.GetComponent<Button>().onClick.AddListener(() =>
-		{
-			GameObject.Find("Manager").GetComponent<GameState>().state = STATE.PAUSE;
-		});
-	}
-
-	private void togglePauseUI(bool isEnabled)
-	{
-		pauseMenu.SetActive(isEnabled);
-		if (isEnabled)
-		{
-			resumeButton.GetComponent<Button>().onClick.AddListener(() =>
-			{
-				GameObject.Find("Manager").GetComponent<GameState>().state = STATE.PLAY;
-			});
-		}
-	}
-
-	public void setScoreText(string text)
-	{
-		scoreText.text = text;
+		if (gs.state != STATE.start){startUI.SetActive(false);}
+		if (gs.state != STATE.play){playUI.SetActive(false);}
+		if (gs.state != STATE.dead){deadUI.SetActive(false);}
+		if (gs.state != STATE.pause){pauseUI.SetActive(false);}
 	}
 }

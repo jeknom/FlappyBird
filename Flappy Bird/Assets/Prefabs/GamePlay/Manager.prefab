@@ -51,12 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef89fd7f4c59394daf36cfbe884c09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRb2d: {fileID: 0}
-  uiController: {fileID: 0}
-  deathPositionX: 4.5
-  deathPositionXDebugLineWidth: 10
   state: 0
-  toggleDebug: 0
-  score: 0
-  randomisedObstacle: {fileID: 1795617165613062, guid: b6da2ddfd45b9f34fb285cc55f799d05,
-    type: 2}
+  player: {fileID: 1241226508975816, guid: d5688ad3ede1dfa4790dc1dcd23472f3, type: 2}
+  obstacle: {fileID: 1795617165613062, guid: b6da2ddfd45b9f34fb285cc55f799d05, type: 2}
+  spawnFrequency: 5
