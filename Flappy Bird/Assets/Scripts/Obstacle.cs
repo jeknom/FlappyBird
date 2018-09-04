@@ -36,5 +36,10 @@ public class Obstacle : MonoBehaviour
 	void FixedUpdate()
 	{
 		gameObject.GetComponent<Rigidbody2D>().position += new Vector2( - Mathf.Abs(selectedPrefs.moveSpeed), 0);
+
+		if (gameObject.GetComponent<Rigidbody2D>().position.x < -15f)
+		{
+			Destroy(gameObject);
+		}
 	}
 }

@@ -105,6 +105,11 @@ MonoBehaviour:
     startPoint: {x: 15, y: -2.3}
     obstacleScale: {x: 1.5, y: 1.5, z: 0}
     obstacleSprite: {fileID: 21300000, guid: 71a14779472c24e3e9d3b2de2199c665, type: 3}
+  - name: Car
+    moveSpeed: 0.2
+    startPoint: {x: 15, y: -3.2}
+    obstacleScale: {x: 1.5, y: 1.5, z: 0}
+    obstacleSprite: {fileID: 21300000, guid: 48564412594e16e4bbd69a0aa60b0188, type: 3}
 --- !u!212 &212517388637351470
 SpriteRenderer:
   m_ObjectHideFlags: 1
