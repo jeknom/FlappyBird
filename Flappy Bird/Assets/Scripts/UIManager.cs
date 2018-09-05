@@ -14,13 +14,14 @@ public class UIManager : MonoBehaviour
 	private Button pauseButton, resumeButton, quitButton;
 
 	[SerializeField]
-	private Text scoreText;
+	private Text scoreText, deadScoreText;
 
 	private void Start()
 	{
 		gs = GameObject.Find("Manager").GetComponent<GameState>();
 		pauseButton.onClick.AddListener(() => {gs.state = STATE.pause;});
 		resumeButton.onClick.AddListener(() => {gs.state = STATE.play;});
+		quitButton.onClick.AddListener(() => {Application.Quit();});
 	}
 
 	private void Update()
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
 				break;
 
 			case STATE.dead:
+				deadScoreText.text = "You survived for " + gs.score + " seconds";
 				break;
 
 			case STATE.pause:

@@ -46,8 +46,8 @@ public class GameState : MonoBehaviour
 			if (state == STATE.play)
 			{
 				score++;
-				yield return new WaitForSeconds(1f);
 			}
+		yield return new WaitForSeconds(1f);
 		}
 	}
 
@@ -56,24 +56,29 @@ public class GameState : MonoBehaviour
 		switch(state)
 		{
 			case STATE.start:
-				if (GameObject.Find("Player")) {Destroy(GameObject.Find("Player"));}
-				GameObject[] activeObstacles = GameObject.FindGameObjectsWithTag("obstacle");
-				foreach(var item in activeObstacles) Destroy(item);
 				Time.timeScale = 0;
 				if (Input.GetKeyDown(KeyCode.Space))
 				{
-					Instantiate(player); 
+					if (GameObject.Find("Player")) {Destroy(GameObject.Find("Player"));}
+					GameObject[] activeObstacles = GameObject.FindGameObjectsWithTag("obstacle");
+					foreach(var item in activeObstacles) Destroy(item);
+					Instantiate(player);
+					score = 0;
 					state = STATE.play;
 				}
 				break;
 
 			case STATE.play:
-				Debug.Log(score);
 				Time.timeScale = 1;
+				if (Input.GetKeyDown(KeyCode.Escape)) {state = STATE.pause;}
 				break;
 				
 			case STATE.dead:
-				state = STATE.start;
+				Time.timeScale = 0;
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					state = STATE.start;
+				}
 				break;
 
 			case STATE.pause:
