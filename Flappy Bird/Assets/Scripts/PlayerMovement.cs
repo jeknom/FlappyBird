@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 	// This resets the players velocity and then adds force to its Y axis.
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && gs.state == STATE.play && !deathSequence)
+		if (Input.GetKeyDown(KeyCode.Space) && gs.state == STATE.play && !deathSequence)
 		{
 			gameObject.GetComponent<Animator>().SetTrigger("flap");
 			rb2d.velocity = new Vector2(0, 0);

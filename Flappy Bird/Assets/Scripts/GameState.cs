@@ -13,6 +13,7 @@ public enum STATE
 public class GameState : MonoBehaviour 
 {
 	public STATE state;
+	public int score;
 
 	[SerializeField, Tooltip("This needs to be the player prefab.")]
 	private GameObject player;
@@ -23,12 +24,30 @@ public class GameState : MonoBehaviour
 	[SerializeField, Tooltip("In seconds, the space of time between obstacle spawn.")]
 	private float spawnFrequency;
 
-	IEnumerator Start()
+	private void Start()
+	{
+		StartCoroutine(obstacleSpawner());
+		StartCoroutine(scoreCounter());
+	}
+
+	IEnumerator obstacleSpawner()
 	{
 		while(true)
 		{
 			Instantiate(obstacle, new Vector3(40, 0, 0), Quaternion.identity);
 			yield return new WaitForSeconds(spawnFrequency);
+		}
+	}
+
+	IEnumerator scoreCounter()
+	{
+		while(true)
+		{
+			if (state == STATE.play)
+			{
+				score++;
+				yield return new WaitForSeconds(1f);
+			}
 		}
 	}
 
@@ -41,7 +60,7 @@ public class GameState : MonoBehaviour
 				GameObject[] activeObstacles = GameObject.FindGameObjectsWithTag("obstacle");
 				foreach(var item in activeObstacles) Destroy(item);
 				Time.timeScale = 0;
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetKeyDown(KeyCode.Space))
 				{
 					Instantiate(player); 
 					state = STATE.play;
@@ -49,6 +68,7 @@ public class GameState : MonoBehaviour
 				break;
 
 			case STATE.play:
+				Debug.Log(score);
 				Time.timeScale = 1;
 				break;
 				

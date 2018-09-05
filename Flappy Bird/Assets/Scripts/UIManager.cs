@@ -10,22 +10,30 @@ public class UIManager : MonoBehaviour
 	[SerializeField]
 	private GameObject startUI, playUI, pauseUI, deadUI;
 
+	[SerializeField]
+	private Button pauseButton, resumeButton, quitButton;
+
+	[SerializeField]
+	private Text scoreText;
+
 	private void Start()
 	{
 		gs = GameObject.Find("Manager").GetComponent<GameState>();
+		pauseButton.onClick.AddListener(() => {gs.state = STATE.pause;});
+		resumeButton.onClick.AddListener(() => {gs.state = STATE.play;});
 	}
 
 	private void Update()
 	{
-		disableUnused();
+		toggleCurrentUI();
 
 		switch(gs.state)
 		{
 			case STATE.start:
-				startUI.SetActive(true);
 				break;
 
 			case STATE.play:
+				scoreText.text = gs.score.ToString();
 				break;
 
 			case STATE.dead:
@@ -36,11 +44,18 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	private void disableUnused()
+	private void toggleCurrentUI()
 	{
-		if (gs.state != STATE.start){startUI.SetActive(false);}
-		if (gs.state != STATE.play){playUI.SetActive(false);}
-		if (gs.state != STATE.dead){deadUI.SetActive(false);}
-		if (gs.state != STATE.pause){pauseUI.SetActive(false);}
+		if (gs.state == STATE.start && !startUI.activeSelf){startUI.SetActive(true);}
+		else if (gs.state != STATE.start){startUI.SetActive(false);}
+
+		if (gs.state == STATE.play && !playUI.activeSelf){playUI.SetActive(true);}
+		else if (gs.state != STATE.play){playUI.SetActive(false);}
+
+		if (gs.state == STATE.dead && !deadUI.activeSelf){deadUI.SetActive(true);}
+		else if (gs.state != STATE.dead){deadUI.SetActive(false);}
+
+		if (gs.state == STATE.pause && !pauseUI.activeSelf){pauseUI.SetActive(true);}
+		else if (gs.state != STATE.pause){pauseUI.SetActive(false);}
 	}
 }
